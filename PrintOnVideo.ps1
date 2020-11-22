@@ -1,4 +1,4 @@
-﻿$path = Read-Host -Prompt "Enter path for folder"
+$path = Read-Host -Prompt "Enter path for folder"
 cd $path
 New-Item -ItemType Directory -Path .\Output -ErrorAction Ignore
 $ffmpeg = "D:\Dor\ffmpeg-20180708-3a2d21b-win64-static\bin\ffmpeg.exe"
