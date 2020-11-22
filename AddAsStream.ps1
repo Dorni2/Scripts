@@ -1,4 +1,4 @@
-﻿$path = Read-Host -Prompt "Enter path for folder"
+$path = Read-Host -Prompt "Enter path for folder"
 cd $path
 New-Item -ItemType Directory -Path .\Output -ErrorAction Ignore
 $ffmpeg = "D:\Dor\ffmpeg-20180708-3a2d21b-win64-static\bin\ffmpeg.exe"
@@ -14,7 +14,7 @@ foreach  ($vid in $Videos)
     $MkvOut = $path + '\Output\' + $vid.Name.Replace('.mkv', '_SubStreamed.mkv')
     ## Change the format here --------------------------^---------
         ## output format cannot be changed - has to be mkv-----------^----------
-    &$ffmpeg -i $vid.Name -sub_charenc WINDOWS-1255 -i $SrtSub -map 0:v -map 0:a -c copy -map 1 -c:s:0 srt -metadata:s:s:0 language=heb $MkvOut
+    &$ffmpeg -i $vid.Name -sub_charenc UTF-8 -i $SrtSub -map 0:v -map 0:a -c copy -map 1 -c:s:0 srt -metadata:s:s:0 language=heb $MkvOut
     "Elapsed time: " + $Stopwatch.Elapsed.ToString()
 }
 $Stopwatch.Stop()
